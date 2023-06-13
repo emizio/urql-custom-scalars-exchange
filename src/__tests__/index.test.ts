@@ -13,11 +13,11 @@ import schema from './__fixtures__/schema.json';
 
 const dispatchDebug = jest.fn();
 
-let client = createClient({ url: 'http://0.0.0.0' });
+let client = createClient({ url: 'http://0.0.0.0', exchanges: [] });
 let { source: ops$, next } = makeSubject<Operation>();
 
 beforeEach(() => {
-  client = createClient({ url: 'http://0.0.0.0' });
+  client = createClient({ url: 'http://0.0.0.0', exchanges: [] });
   ({ source: ops$, next } = makeSubject<Operation>());
 });
 
@@ -182,6 +182,8 @@ test.each([
       return {
         operation: forwardOp,
         data: { __typename: 'Query', ...data },
+        stale: false,
+        hasNext: false,
       };
     }
   );
