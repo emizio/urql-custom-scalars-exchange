@@ -15,7 +15,8 @@
     "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "prepare": "tsdx build --transpileOnly"
+    "prepare": "tsdx build --transpileOnly",
+    "postinstall": "npm run prepare"
   },
   "peerDependencies": {
     "@urql/core": "^4.0.0",
